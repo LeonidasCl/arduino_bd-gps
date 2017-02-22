@@ -13,7 +13,7 @@ String  APIKEY="05c0a2ff6"; //密码
 unsigned long lastCheckInTime = 0; //记录上次报到时间
 const unsigned long postingInterval = 20000; // 每隔60秒向服务器报到一次
 String inputString = "";
-char cid[5]={'U','1','2','0','8'};
+char cid[5]={'U','1','2','8','0'};
 char says[8]={'E','X','C','I','T','E','D','!'};
 String strtmp="";
 boolean stringComplete = false;
@@ -96,6 +96,8 @@ void printGpsBuffer()
 		else
 		{
 			DebugSerial.println("not usefull!");
+                        //temp check
+                        //checkIn();
 		}
 		
 	}
@@ -264,6 +266,15 @@ void checkIn() {
     //DebugSerial.print(Save_Data.latitude);
     DebugSerial.print(tlat,6);
     DebugSerial.print("\"}}\r\n");
+    
+    delay(200);    
+    DebugSerial.print("{\"M\":\"say\",\"ID\":\"");
+    DebugSerial.print("D1442");
+    DebugSerial.print("\",\"C\":\"");
+    DebugSerial.print(tlon,6);
+    DebugSerial.print("-");
+    DebugSerial.print(tlat,6);
+    DebugSerial.print("\"}\r\n");
     
     delay(500);
     DebugSerial.print("+++\r\n");
